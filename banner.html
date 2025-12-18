@@ -12,21 +12,29 @@
 
                 <!-- Location -->
                 <div class="search-item" style="position: relative;">
-                    <!-- <label>Location</label> -->
-                    <input type="text" id="locationInput" placeholder="Search your location">
-                    <div class="suggestions" id="suggestionsBox"></div>
+                    <div class="date-field">
+    <input type="text" id="location" required>
+    <label for="location">Location</label>
+</div>
                 </div>
 
                 <!-- Pickup -->
                 <div class="search-item search1">
                     <!-- <label>Pickup date</label> -->
-                    <input type="text" id="pickupDate" placeholder="Select pickup date">
+                    <!-- <input type="text" id="pickupDate" placeholder="Select pickup date"> -->
+                     <div class="date-field" onclick="openDate('pickupDate')">
+    <input type="date" id="pickupDate" required>
+    <label for="pickupDate">Pickup date</label>
+</div>
+
                 </div>
 
                 <!-- Return -->
                 <div class="search-item">
-                    <!-- <label>Return date</label> -->
-                    <input type="text" id="returnDate" placeholder="Select return date">
+                    <div class="date-field" onclick="openDate('returndate')">
+    <input type="date" id="returndate" required>
+    <label for="returndate">Return date</label>
+</div>
                 </div>
 
                 <button class="search-btn">Search</button>

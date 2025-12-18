@@ -937,3 +937,37 @@ font-size: 30px;
     }
 }
 
+.date-field {
+    position: relative;
+}
+
+.date-field input {
+    width: 100%;
+    height: 48px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.date-field label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.3s;
+    background: #fff;
+    padding: 0 6px;
+}
+
+/* When date selected */
+.date-field input:focus + label,
+.date-field input:valid + label {
+    top: -8px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+
