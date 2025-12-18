@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Testimonials</title>
+
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+   
+
+    .testimonial-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .testimonial-img {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+        object-fit: cover;
+    }
+
+    .star {
+        font-size: 24px;
+        cursor: pointer;
+        color: #ddd;
+    }
+
+    .star.selected {
+        color: gold;
+    }
+</style>
+
+</head>
+<body>
+
+
+<div class="container py-5">
+
+    <!-- Heading -->
+    <div class="text-center mb-4">
+        <h2><strong>What people say about us?</strong></h2>
+        <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#testimonialModal">
+            Write Testimonial
+        </button>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="row" id="testimonialContainer"></div>
+</div>
+
+
+<div class="modal fade" id="testimonialModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Write a Testimonial</h4>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="testimonialForm">
+
+                    <!-- Image -->
+                   <div class="row">
+                    <div class="col-lg-6 col-12">
+                     <label class="mt-2 mb-1">Upload Image</label>
+                    <input type="file" id="imageInput" class="form-control">
+                    <img id="previewImg" src="" class="mt-3" style="width:120px; display:none; border-radius:10px;">
+                   </div>
+
+                    <!-- Name -->
+                   <div class="col-lg-6 col-12">
+                     <label class="mt-3 mb-1">Name</label>
+                    <input type="text" id="nameInput" class="form-control" required>
+                   </div>
+
+                   </div>
+                    <!-- Location -->
+                  <div class="row">
+                      <div class="col-lg-6 col-12">
+                        <label class="mt-3 mb-1">Location</label>
+                    <input type="text" id="locationInput" class="form-control" required>
+                    </div>
+<div class="col-lg-6 col-12">
+                     <label class="mt-3 mb-1">Rating</label><br>
+                    <div id="starRating">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+
+                    <input type="hidden" id="ratingInput" value="0">
+
+                   </div>
+                  </div>
+
+                    <!-- Remarks -->
+                   <div>
+                     <label class="mt-3 mb-1">Remarks</label>
+                    <textarea id="remarksInput" class="form-control" rows="3" required></textarea>
+
+                   </div>
+                    <!-- Rating -->
+                   
+                    <button type="submit" class="btn btn-success mt-4 w-100">
+                        Submit Testimonial
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- JQuery + Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script>
+
+let defaultTestimonials = [
+    {
+        "image": "https://i.ibb.co/2h5pnZb/user1.jpg",
+        "name": "Charlie Johnson",
+        "location": "New York, USA",
+        "rating": 5,
+        "remarks": "Excellent service! The car was clean, comfortable, and delivered on time."
+    }
+];
+
+
+let testimonials = JSON.parse(localStorage.getItem("testimonials")) || defaultTestimonials;
+
+$("#imageInput").change(function () {
+    let file = this.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+        $("#previewImg").attr("src", e.target.result).show();
+    };
+
+    reader.readAsDataURL(file);
+});
+
+$(".star").click(function () {
+    let value = $(this).data("value");
+    $("#ratingInput").val(value);
+
+    $(".star").removeClass("selected");
+    for (let i = 1; i <= value; i++) {
+        $(`.star[data-value=${i}]`).addClass("selected");
+    }
+});
+
+
+$("#testimonialForm").submit(function (e) {
+    e.preventDefault();
+
+    let newTestimonial = {
+        image: $("#previewImg").attr("src"),
+        name: $("#nameInput").val(),
+        location: $("#locationInput").val(),
+        remarks: $("#remarksInput").val(),
+        rating: $("#ratingInput").val()
+    };
+
+    testimonials.push(newTestimonial);
+
+    localStorage.setItem("testimonials", JSON.stringify(testimonials));
+
+    loadTestimonials();
+
+    $("#testimonialForm")[0].reset();
+    $("#previewImg").hide();
+    $(".star").removeClass("selected");
+
+    $("#testimonialModal").modal("hide");
+});
+
+
+function loadTestimonials() {
+    let output = "";
+
+    testimonials.forEach(t => {
+        output += `
+            <div class="col-md-6 mb-4">
+                <div class="testimonial-card d-flex gap-4">
+                    <img src="${t.image}" class="testimonial-img">
+
+                    <div>
+                        <h4>${t.rating}.0 ⭐</h4>
+                        <p>${t.remarks}</p>
+                        <h5 class="mt-3">${t.name}</h5>
+                        <small>${t.location}</small>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    $("#testimonialContainer").html(output);
+}
+
+loadTestimonials();
+
+</script>
+
+</body>
+</html>

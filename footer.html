@@ -1,0 +1,133 @@
+<div class="container">
+        <div class="row g-4">
+            <!-- About Section -->
+            <div class="col-lg-3 col-md-6">
+                <img src="/Rentcars.png" alt="" class="w-75 mb-2">
+                <!-- <h5 class="footer-heading mb-3">About Us</h5> -->
+                <p class="footer-text small">Rentcars offers trusted car rentals with 7 years of experience, delivering comfortable rides for every journey.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Enhanced Quick Links -->
+            <div class="col-lg-3 col-6">
+                <h5 class="footer-heading mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                   
+             <li class="mb-2">
+                        <a href="#" class="footer-link">
+                            <span class="link-text  bi bi-arrow-right-short link-icon">Home</span>
+                         
+                        </a>
+                    </li>
+                     
+                    <li class="mb-2">
+                        <a href="#about" class="footer-link">
+                            <span class="link-text  bi bi-arrow-right-short link-icon">About</span>
+                         
+                        </a>
+                    </li>
+                  
+                  <li class="mb-2">
+                        <a href="#carContainer" class="footer-link">
+                            <span class="link-text  bi bi-arrow-right-short link-icon">Car Rent</span>
+                         
+                        </a>
+                    </li>
+                     <li class="mb-2">
+                        <a href="#contact" class="footer-link">
+                            <span class="link-text  bi bi-arrow-right-short link-icon">Contact</span>
+                         
+                        </a>
+                    </li>
+                    <!-- Repeat for other links -->
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-6">
+                <h5 class="footer-heading mb-3">Contact</h5>
+                <ul class="list-unstyled footer-text small">
+                    <li class="mb-2">
+                        <i class="bi bi-geo-alt-fill me-2"></i>
+                        123 Street, City, Country
+                    </li>
+                    <li class="mb-2">
+                       <a href="tel:8962226464" class="text-decoration-none text-dark">
+                         <i class="bi bi-telephone-fill me-2"></i>
+                        8962226464
+                       </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="mailto:info@example.com" class="text-decoration-none text-dark">
+                        <i class="bi bi-envelope-fill me-2"></i>
+                        info@gmail.com
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter with Animation -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-heading mb-3">Newsletter</h5>
+                <form class="newsletter-form">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control form-control-sm" placeholder="Enter email">
+                        <button class="btn btn-primary btn-sm" type="button">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="scroll-top text-end">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <button class="btn-scroll-top">
+                        <i class="bi bi-arrow-up-circle-fill"></i>
+                    </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center  py-3 mt-4 border-top">
+            <small class="footer-text">
+                Copyright 2025 ・ Rentcars, Design by Ayush
+                <p>Privacy | Terms </p> 
+              
+            </small>
+        </div>
+    </div>
+
+      <script>
+        // Smooth scroll to top
+        document.querySelector('.btn-scroll-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.footer-link').forEach((element) => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.5s ease';
+                observer.observe(element);
+            });
+        });
+    </script>

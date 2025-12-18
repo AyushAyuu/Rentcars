@@ -1,0 +1,86 @@
+<div class="container py-5">
+
+    <!-- Heading -->
+     <div class="heading">
+        <h5>Feedback</h5>
+        <h1>What Customer say about us</h1>
+    </div>
+    
+
+    <!-- Testimonials Grid -->
+    <div class="row" id="testimonialContainer"></div>
+    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#testimonialModal">
+            Write Testimonial
+        </button>
+</div>
+
+
+<div class="modal fade" id="testimonialModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-4">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Write a Testimonial</h4>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="testimonialForm">
+
+                    <!-- Image -->
+                   <div class="row">
+                    <div class="col-lg-6 col-12">
+                     <label class="mt-2 mb-1">Upload Image</label>
+                    <input type="file" id="imageInput" class="form-control">
+                    <img id="previewImg" src="" class="mt-3" style="width:120px; display:none; border-radius:10px;">
+                   </div>
+
+                    <!-- Name -->
+                   <div class="col-lg-6 col-12">
+                     <label class="mt-3 mb-1">Name</label>
+                    <input type="text" id="nameInput" class="form-control" required>
+                   </div>
+
+                   </div>
+                    <!-- Location -->
+                  <div class="row">
+                      <div class="col-lg-6 col-12">
+                        <label class="mt-3 mb-1">Location</label>
+                    <input type="text" id="locationInput" class="form-control" required>
+                    </div>
+<div class="col-lg-6 col-12">
+                     <label class="mt-3 mb-1">Rating</label><br>
+                    <div id="starRating">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+
+                    <input type="hidden" id="ratingInput" value="0">
+
+                   </div>
+                  </div>
+
+                    <!-- Remarks -->
+                   <div>
+                     <label class="mt-3 mb-1">Remarks</label>
+                    <textarea id="remarksInput" class="form-control" rows="3" required></textarea>
+
+                   </div>
+                    <!-- Rating -->
+                   
+                    <button type="submit" class="btn btn-success mt-4 w-100">
+                        Submit Testimonial
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
