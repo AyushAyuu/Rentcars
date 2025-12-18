@@ -142,15 +142,19 @@ loadComponent("contact", "contact.html");
 
     loadCars();
 
-$(document).ready(function () {
+$(function () {
 
-        $("#pickupDate, #returnDate").datepicker({
-            dateFormat: "dd M yy",
-            minDate: 0
-        });
-   
+    $("#pickupDate, #returnDate, #traveldate").datepicker({
+        dateFormat: "dd MM yy",
+        minDate: 0,
+        showAnim: "fadeIn",
+        numberOfMonths: 1,
+        changeMonth: true,
+        changeYear: true
+    });
 
 });
+
 
 
 
