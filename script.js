@@ -142,11 +142,23 @@ loadComponent("contact", "contact.html");
 
     loadCars();
 
+function setMinToday() {
+    const today = new Date().toISOString().split("T")[0];
+
+    document.getElementById("pickupDate").min = today;
+    document.getElementById("returnDate").min = today;
+}
+
 function openDate(id) {
     const input = document.getElementById(id);
 
     if (input) {
-        input.focus();   // Mobile & Desktop
-        input.showPicker && input.showPicker(); // Chrome / Edge
+        input.focus();
+        if (input.showPicker) {
+            input.showPicker(); // Chrome / Edge
+        }
     }
 }
+
+setMinToday();
+
