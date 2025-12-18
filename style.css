@@ -958,6 +958,7 @@ font-size: 30px;
     padding: 10px 12px;
     border-radius: 10px;
     font-size: 14px;
+	background: none;
 }
 
 .date-field label {
@@ -980,6 +981,7 @@ font-size: 30px;
     font-size: 12px;
     color: var(--primary-color);
 }
+
 
 
 
