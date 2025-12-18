@@ -142,23 +142,15 @@ loadComponent("contact", "contact.html");
 
     loadCars();
 
-function setMinToday() {
-    const today = new Date().toISOString().split("T")[0];
+// $(function () {
 
-    document.getElementById("pickupDate").min = today;
-    document.getElementById("returnDate").min = today;
-}
+//     $("#pickupDate, #returnDate, #traveldate").datepicker({
+//         dateFormat: "dd MM yy",
+//         minDate: 0,
+//         showAnim: "fadeIn",
+//         numberOfMonths: 1,
+//         changeMonth: true,
+//         changeYear: true
+//     });
 
-function openDate(id) {
-    const input = document.getElementById(id);
-
-    if (input) {
-        input.focus();
-        if (input.showPicker) {
-            input.showPicker(); // Chrome / Edge
-        }
-    }
-}
-
-setMinToday();
-
+// });
